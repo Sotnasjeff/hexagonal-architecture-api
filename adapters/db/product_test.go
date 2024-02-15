@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/Sotnasjeff/hexagonal-architecture-api/adapters/db"
+	"github.com/Sotnasjeff/hexagonal-architecture-api/app"
 	"github.com/stretchr/testify/require"
 )
 
@@ -47,4 +48,26 @@ func TestProductDb_Get(t *testing.T) {
 	require.Equal(t, "Product Test", product.GetName())
 	require.Equal(t, 0.0, product.GetPrice())
 	require.Equal(t, "disabled", product.GetStatus())
+}
+
+func TestProductDb_Save(t *testing.T) {
+	setUp()
+	defer DB.Close()
+	productDB := db.NewProductDB(DB)
+
+	product := app.NewProduct()
+	product.Name = "Product Test"
+	product.Price = 25
+
+	productResult, err := productDB.Save(product)
+	require.Nil(t, err)
+	require.Equal(t, product.Name, productResult.GetName())
+	require.Equal(t, product.Price, productResult.GetPrice())
+	require.Equal(t, product.Status, productResult.GetStatus())
+
+	product.Status = "enabled"
+	productResult, err = productDB.Save(product)
+	require.Nil(t, err)
+	require.Equal(t, product.Status, productResult.GetStatus())
+
 }

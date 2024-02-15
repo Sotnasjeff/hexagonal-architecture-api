@@ -34,7 +34,7 @@ func (p *ProductDB) Get(id string) (app.ProductInterface, error) {
 
 func (p *ProductDB) Save(product app.ProductInterface) (app.ProductInterface, error) {
 	var rows int
-	p.db.QueryRow("SELECT idFROM products WHERE id = ?", product.GetId()).Scan(&rows)
+	p.db.QueryRow("SELECT id FROM products WHERE id = ?", product.GetId()).Scan(&rows)
 	if rows == 0 {
 		_, err := p.create(product)
 		if err != nil {
