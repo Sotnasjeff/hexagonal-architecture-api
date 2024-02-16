@@ -10,14 +10,14 @@ import (
 )
 
 func main() {
-	db, _ := sql.Open("sqlite3", ":memory:")
+	db, _ := sql.Open("sqlite3", "./db.sqlite")
+	defer db.Close()
 	productDbAdapter := db2.NewProductDB(db)
 	productService := app.NewProductService(productDbAdapter)
 	product, err := productService.Create("Product Example", 30)
 	if err != nil {
 		log.Fatalf(err.Error())
 	}
-
 	productService.Enable(product)
 
 }
