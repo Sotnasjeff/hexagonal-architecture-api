@@ -1,0 +1,7 @@
+PUT http://localhost:9000/product/disable HTTP/1.1
+Host: localhost:9000
+Content-Type: application/json
+
+{
+    "id":"3a3a6f98-69cc-4e29-8b30-debcffeccda7"
+}

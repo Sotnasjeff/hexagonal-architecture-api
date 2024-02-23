@@ -1,0 +1,3 @@
+GET http://localhost:9000/product/4da0d3ae-c72b-4fc1-96fb-c72e32afa6ac HTTP/1.1
+Host: localhost:9000
+Content-Type: application/json
