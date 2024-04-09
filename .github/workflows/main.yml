@@ -29,3 +29,7 @@ jobs:
         - name: Install Go cobra dependencies
           run: |
             go get -u github.com/spf13/cobra@latest && go install github.com/spf13/cobra-cli@latest;
+
+        - name: Install Go sqlite3
+          run: |
+            apt-get update && apt-get install sqlite3 -y;
