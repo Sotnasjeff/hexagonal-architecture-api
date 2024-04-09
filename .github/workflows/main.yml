@@ -34,7 +34,9 @@ jobs:
           run: |
             sudo apt-get install sqlite3 -y;
 
-        - name: Execute unit tests
-          run: |
-            go test -v;
+        - name: Build Application
+          run: go build -v ./...
+
+        - name: Test with Go CLI
+          run: go test
 
