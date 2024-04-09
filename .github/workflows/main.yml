@@ -25,3 +25,8 @@ jobs:
         - name: Install Go MockGen
           run: |
             go install github.com/golang/mock/mockgen@v1.6.0;
+
+        - name: Install Go cobra dependencies
+          run: |
+            go get -u github.com/spf13/cobra@latest && \     
+            go install github.com/spf13/cobra-cli@latest;
