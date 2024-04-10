@@ -52,6 +52,6 @@ jobs:
             file: Dockerfile
             push: true
             tags: |
-              jeffsky10/hexagonal-architecture-api:v1
+              jeffsky10/hexagonal-architecture-api:${{github.run_number}}
               jeffsky10/hexagonal-architecture-api:latest
 
